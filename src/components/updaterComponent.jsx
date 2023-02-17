@@ -22,7 +22,7 @@ const UpdaterComponent = ({ onConfirm, mortgageValues }) => {
     <div>
       <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1">
-          {componantInput.valuation}
+          {mortgageValues.valuation}
         </InputGroup.Text>
         <Form.Control
           placeholder="Componant"
