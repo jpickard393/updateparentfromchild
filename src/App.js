@@ -6,26 +6,25 @@ import InputGroup from "react-bootstrap/InputGroup";
 
 function App() {
   const initialMortgageValues = {
-    //propertyType:"House",
-    valuation:"100000",
-    //balance:"1000"
+    id:1,
+    valuation:"app"
 };
-  const [mortgageValues, setMortgageValues] = useState("1000");
+  const [mortgageValues, setMortgageValues] = useState(initialMortgageValues);
 
-  const onConfirm = (updatedValue) => {
-    setMortgageValues(updatedValue);
-    console.log("page updatedValues", updatedValue);
+  const onConfirm = (updatedValues) => {
+    console.log("page updatedValues", updatedValues);
+    setMortgageValues(updatedValues);
   };
 
   return (
     <div className="App">
       <div>
       <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon1">{mortgageValues}</InputGroup.Text>
+        <InputGroup.Text id="basic-addon1">{mortgageValues.valuation}</InputGroup.Text>
         
       </InputGroup>
       </div>
-      <UpdaterComponent onConfirm={(updatedValues) => onConfirm(updatedValues)} mortgageValues={mortgageValues}/>
+      <UpdaterComponent onConfirm={(udatedValues) => onConfirm(udatedValues)} mortgageValues={mortgageValues}/>
     </div>
   );
 }

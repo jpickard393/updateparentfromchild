@@ -4,28 +4,34 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Button from "react-bootstrap/Button";
 
 const UpdaterComponent = ({ onConfirm, mortgageValues }) => {
-  const [dialogInput, setDialogInput] = useState();
+  const [componantInput, setComponantInput] = useState(mortgageValues);
 
   const updateValue = (e) => {
-    setDialogInput(e.target.value);
-    console.log(e.target.value);
+    const newMortgageValues = { ...mortgageValues };
+
+    const valuation = e.target.value;
+    newMortgageValues.valuation = valuation;
+    newMortgageValues.id = 2;
+    setComponantInput(newMortgageValues);
   };
 
-  const confirmAndClose = () => {
-    onConfirm(dialogInput);
+  const confirm = () => {
+    onConfirm(componantInput);
   };
   return (
     <div>
       <InputGroup className="mb-3">
-        <InputGroup.Text id="basic-addon1">{mortgageValues}</InputGroup.Text>
+        <InputGroup.Text id="basic-addon1">
+          {componantInput.valuation}
+        </InputGroup.Text>
         <Form.Control
-          placeholder="Username"
+          placeholder="Componant"
           aria-label="Username"
           aria-describedby="basic-addon1"
           onChange={updateValue}
         />
       </InputGroup>
-      <Button variant="primary" onClick={confirmAndClose}>
+      <Button variant="primary" onClick={confirm}>
         Primary
       </Button>{" "}
     </div>
